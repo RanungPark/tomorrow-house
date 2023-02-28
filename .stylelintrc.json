@@ -69,12 +69,6 @@
     ],
     "declaration-empty-line-before": null,
     "font-family-no-missing-generic-family-keyword": null,
-    "function-calc-no-invalid": [
-      true,
-      {
-        "severity": "warning"
-      }
-    ],
     "function-calc-no-unspaced-operator": [
       true,
       {
