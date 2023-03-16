@@ -70,7 +70,7 @@ $lg-max-container: ($lg-unit + $gutter) * $lg-columns;
     }
   }
 
-  @include responsive(L) {
+  @include responsive(D) {
     max-width: $lg-max-container;
     padding: 0;
 
