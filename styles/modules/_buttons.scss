@@ -33,7 +33,7 @@
   }
 }
 
-.btn-fill-outlined {
+.btn-outlined {
   @extend %btn-base;
   color: $blue;
   background-color: $white;
@@ -45,7 +45,7 @@
   }
 }
 
-.btn-fill-ghost {
+.btn-ghost {
   @extend %btn-base;
   color: $primary;
   background-color: $white;
