@@ -94,4 +94,37 @@
       margin-right: 0;
     }
   }
+
+  @include responsive(D) {
+    @include flexbox(end, start);
+    flex-direction: row-reverse;
+
+    &-slider {
+      width: 500%;
+      height: 500%;
+    }
+
+    &-thumbnail {
+      margin-right: 8px;
+    }
+
+    .thumbnail-list {
+      flex-direction: column;
+    }
+
+    .thumbnail-item {
+      margin-right: 0;
+      margin-bottom: 8px;
+
+      button,
+      img {
+        width: 75px;
+        height: 75px;
+      }
+    }
+
+    .thumbnail-item:nth-child(4) {
+      margin-bottom: 0;
+    }
+  }
 }
