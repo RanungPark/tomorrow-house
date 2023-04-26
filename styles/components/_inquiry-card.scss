@@ -51,23 +51,30 @@
         color: $blue;
       }
 
-      pre {
+      p {
+        @include flexbox(start);
         color: $primary;
+
+        i {
+          margin-right: 8px;
+          font-size: 16px;
+          color: $tertiary;
+        }
       }
     }
-  }
 
-  @include responsive(T) {
-    &-header {
-      margin-bottom: 20px;
-    }
+    @include responsive(T) {
+      &-header {
+        margin-bottom: 20px;
+      }
 
-    &-body {
-      @include text-style(14);
-      padding-left: 24px;
+      &-body {
+        @include text-style(14);
+        padding-left: 24px;
 
-      span {
-        @include text-style(16);
+        span {
+          @include text-style(16);
+        }
       }
     }
   }
