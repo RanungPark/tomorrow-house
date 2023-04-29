@@ -1,7 +1,5 @@
 .product-card {
   &-image {
-    width: 135px;
-    height: 135px;
     margin-bottom: 8px;
     overflow: hidden;
     border-radius: 4px;
@@ -22,13 +20,11 @@
 
   &-title {
     @include text-style(13, $dark);
-    width: 135px;
-    height: 32px;
-    overflow: hidden;
+    // overflow: hidden;
     font-weight: 400;
     line-height: 16px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
   }
 
   &-price {
@@ -91,6 +87,6 @@
   }
 
   @include responsive(T) {
-    
+
   }
 }
