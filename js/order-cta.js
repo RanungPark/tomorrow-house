@@ -18,3 +18,27 @@ function closeOrderModal() {
 orderCtaBuyButton.addEventListener('click', openOrderModal);
 
 orderModalOverlay.addEventListener('click', closeOrderModal);
+
+
+function toggleOrderCtaBookmark() {
+  const [icon, countspan] = this.children;
+  const count = Number(countspan.innerHTML.replaceAll(',', ''));
+
+  let newCount = count;
+
+  if (this.classList.contains('is-active')) {
+    icon.classList.add('ic-bookmark');
+    icon.classList.remove('ic-bookmark-filled');
+    newCount = newCount - 1;
+  } else {
+    icon.classList.add('ic-bookmark-filled');
+    icon.classList.remove('ic-bookmark');
+    newCount = newCount + 1;
+  }
+
+  countspan.innerHTML = newCount.toLocaleString();
+
+  this.classList.toggle('is-active');
+}
+
+orderCtaBookmarkButton.addEventListener('click', toggleOrderCtaBookmark);
