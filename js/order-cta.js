@@ -21,23 +21,21 @@ orderModalOverlay.addEventListener('click', closeOrderModal);
 
 
 function toggleOrderCtaBookmark() {
-  const [icon, countspan] = this.children;
-  const count = Number(countspan.innerHTML.replaceAll(',', ''));
+  const [icon, countSpan] = this.children;
+  const count = Number(countSpan.innerHTML.replaceAll(',', ''));
 
   let newCount = count;
 
   if (this.classList.contains('is-active')) {
-    icon.classList.add('ic-bookmark');
-    icon.classList.remove('ic-bookmark-filled');
+    icon.setAttribute('class', 'ic-bookmark');
     newCount = newCount - 1;
   } else {
-    icon.classList.add('ic-bookmark-filled');
-    icon.classList.remove('ic-bookmark');
+    icon.setAttribute('class', 'ic-bookmark-filled');
     newCount = newCount + 1;
   }
 
-  countspan.innerHTML = newCount.toLocaleString();
-
+  countSpan.innerHTML = newCount.toLocaleString();
+  countSpan.setAttribute = ('aria-label', `북마크 ${newCount.toLocaleString()}회`);
   this.classList.toggle('is-active');
 }
 
