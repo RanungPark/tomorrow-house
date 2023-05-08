@@ -8,7 +8,7 @@ const searchModalHistoryList = searchModalHistory.querySelector('ol');
 
 const deleteAllButtonSearchModal = searchModalHistory.querySelector('.search-history-header button');
 
-console.log(deleteAllButtonSearchModal);
+const deleteButtonSearchModalList = searchModalHistoryList.querySelectorAll('.delete-button');
 
 function openSearchModal() {
   searchModal.classList.add('is-active');
@@ -24,7 +24,18 @@ function deleteAllSearchModalHistories() {
   searchModalHistoryList.innerHTML = '';
 }
 
+function deleteSearchModalHistory() {
+  const itemToDeleteSearchModal = this.parentNode;
+  searchModalHistoryList.removeChild(itemToDeleteSearchModal);
+}
+
 searchButton.addEventListener('click', openSearchModal);
 searchModalCloseButton.addEventListener('click', closeSearchModal);
 
 deleteAllButtonSearchModal.addEventListener('click', deleteAllSearchModalHistories);
+
+
+
+deleteButtonSearchModalList.forEach((button) => {
+  button.addEventListener('click', deleteSearchModalHistory);
+});
