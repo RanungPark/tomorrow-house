@@ -2,7 +2,17 @@ const gnbSearch = document.querySelector('.gnb-search');
 const gnbSearchInput = gnbSearch.querySelector('input');
 const gnbSearchHistory = gnbSearch.querySelector('.search-history');
 
+const gnbSearchHistoryList = gnbSearchHistory.querySelector('ol');
+
+const deleteAllButton = gnbSearchHistory.querySelector('.search-history-header button');
+
+console.log(deleteAllButton);
+
 function openGnbSearchHistory() {
+  if (gnbSearchHistoryList.children.length === 0) {
+    return;
+  }
+
   if (!gnbSearchHistory.classList.contains('is-active')) {
     window.addEventListener('click', closeGnbSearchHistory);
   }
@@ -16,5 +26,11 @@ function closeGnbSearchHistory(e) {
   }
 }
 
+function deleteAllSearchHistories() {
+  gnbSearchHistoryList.innerHTML = '';
+  gnbSearchHistory.classList.remove('is-active');
+}
+
 gnbSearchInput.addEventListener('focus', openGnbSearchHistory);
-window.addEventListener('click', closeGnbSearchHistory);
+
+deleteAllButton.addEventListener('click', deleteAllSearchHistories);

@@ -1,7 +1,14 @@
 const searchModal = document.querySelector('.search-modal');
 const searchoverlay = document.querySelector('.overlay');
 const searchButton = document.querySelector('.gnb-icon-button.is-search');
-const searchMoalCloseButton = searchModal.querySelector('.search-modal-form .btn-ghost');
+const searchModalCloseButton = searchModal.querySelector('.search-modal-form .btn-ghost');
+const searchModalHistory = searchModal.querySelector('.search-history')
+
+const searchModalHistoryList = searchModalHistory.querySelector('ol');
+
+const deleteAllButtonSearchModal = searchModalHistory.querySelector('.search-history-header button');
+
+console.log(deleteAllButtonSearchModal);
 
 function openSearchModal() {
   searchModal.classList.add('is-active');
@@ -13,5 +20,11 @@ function closeSearchModal() {
   searchoverlay.classList.remove('is-active');
 }
 
+function deleteAllSearchModalHistories() {
+  searchModalHistoryList.innerHTML = '';
+}
+
 searchButton.addEventListener('click', openSearchModal);
-searchMoalCloseButton.addEventListener('click', closeSearchModal);
+searchModalCloseButton.addEventListener('click', closeSearchModal);
+
+deleteAllButtonSearchModal.addEventListener('click', deleteAllSearchModalHistories);
