@@ -1,21 +1,36 @@
 const productTab = document.querySelector('.product-tab');
 const productTabButtonList = productTab.querySelectorAll('button');
 
-console.log(productTabButtonList);
+const TOP_HEADER_MOBILE = 50 + 40 + 40;
+const TOP_HEADER_DESKTOP = 80 + 50 + 54;
 
 let currentActiveTab = productTab.querySelector('.is-active');
-console.log(currentActiveTab);
 
 function toggleActiveTab() {
   const tabItem = this.parentNode;
 
-  if(currentActiveTab !== tabItem){
+  if (currentActiveTab !== tabItem) {
     tabItem.classList.add('is-active');
     currentActiveTab.classList.remove('is-active');
     currentActiveTab = tabItem;
   }
 }
 
+function scrollToTabPanel() {
+  const tabPanelId = this.parentNode.getAttribute('aria-labelledby');
+  console.log = tabPanelId;
+  const tabPanel = document.querySelector(`#${tabPanelId}`);
+  console.log = tabPanel;
+
+  const scrollAmount = tabPanel.getBoundingClientRect().top - (window.innerWidth < 768 ? TOP_HEADER_MOBILE : TOP_HEADER_DESKTOP);
+
+  window.scrollBy({
+    top: scrollAmount,
+    behavior: 'smooth'
+  })
+}
+
 productTabButtonList.forEach((button) => {
   button.addEventListener('click', toggleActiveTab);
+  button.addEventListener('click', scrollToTabPanel);
 })
