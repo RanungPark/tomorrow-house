@@ -18,9 +18,7 @@ function toggleActiveTab() {
 
 function scrollToTabPanel() {
   const tabPanelId = this.parentNode.getAttribute('aria-labelledby');
-  console.log = tabPanelId;
   const tabPanel = document.querySelector(`#${tabPanelId}`);
-  console.log = tabPanel;
 
   const scrollAmount = tabPanel.getBoundingClientRect().top - (window.innerWidth < 768 ? TOP_HEADER_MOBILE : TOP_HEADER_DESKTOP);
 
@@ -48,8 +46,6 @@ const productTabPanelList = productTabPanelIdList.map((panelId) => {
   return tabPanel;
 })
 
-console.log(productTabPanelList[0]);
-
 const productTabPanelPositionMap = {}
 
 function detectTabPanelPosition() {
@@ -60,5 +56,33 @@ function detectTabPanelPosition() {
   })
 }
 
-window.addEventListener('load',detectTabPanelPosition);
-window.addEventListener('resize',detectTabPanelPosition);
+function updateActiveTabOnScroll() {
+  const scrolledAmount = window.scrollY + (window.innerWidth < 768 ? TOP_HEADER_MOBILE + 8 : TOP_HEADER_DESKTOP + 80);
+
+  let newActiveTab;
+  if (scrolledAmount >= productTabPanelPositionMap['product-recommendation']) {
+    newActiveTab = productTabButtonList[4];
+  } else if (scrolledAmount >= productTabPanelPositionMap['product-shipment']) {
+    newActiveTab = productTabButtonList[3];
+  } else if (scrolledAmount >= productTabPanelPositionMap['product-inquiry']) {
+    newActiveTab = productTabButtonList[2];
+  } else if (scrolledAmount >= productTabPanelPositionMap['product-review']) {
+    newActiveTab = productTabButtonList[1];
+  } else {
+    newActiveTab = productTabButtonList[0];
+  }
+
+  if (newActiveTab) {
+    newActiveTab = newActiveTab.parentNode;
+
+    if (newActiveTab !== currentActiveTab) {
+      newActiveTab.classList.add('is-active');
+      currentActiveTab.classList.remove('is-active');
+      currentActiveTab = newActiveTab;
+    }
+  }
+}
+
+window.addEventListener('load', detectTabPanelPosition);
+window.addEventListener('resize', detectTabPanelPosition);
+window.addEventListener('scroll', updateActiveTabOnScroll)
